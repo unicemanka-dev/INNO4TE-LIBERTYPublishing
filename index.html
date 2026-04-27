@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNO4TE × LIBERTY Publishing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-navy: #0A1628;
+            --brand-gold: #C9A84C;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-navy);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.3); border-radius: 10px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
+        
+        .transition-all { transition: all 0.3s ease; }
+        [data-lang-content] { transition: opacity 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <nav class="h-16 lg:h-14 border-b border-[#C9A84C]/30 flex items-center justify-between px-6 lg:px-8 bg-[#0A1628] sticky top-0 z-50">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('home')">
+            <span class="font-serif text-lg md:text-xl font-bold text-[#C9A84C] tracking-tight">INNO4TE × LIBERTY</span>
+        </div>
+        
+        <div class="flex items-center gap-4 lg:gap-8 overflow-x-auto no-scrollbar">
+            <div class="hidden md:flex items-center gap-6 text-[10px] lg:text-[11px] uppercase tracking-widest font-semibold">
+                <button onclick="scrollToSection('home')" data-t="nav.home" class="hover:text-[#C9A84C] transition-colors">Home</button>
+                <button onclick="scrollToSection('about')" data-t="nav.about" class="hover:text-[#C9A84C] transition-colors">About Us</button>
+                <button onclick="scrollToSection('pricing')" data-t="nav.pricing" class="hover:text-[#C9A84C] transition-colors">Pricing</button>
+                <button onclick="scrollToSection('contact')" data-t="nav.contact" class="hover:text-[#C9A84C] transition-colors">Contact Us</button>
+            </div>
+            <button onclick="toggleLanguage()" id="langBtn" class="bg-[#C9A84C] text-[#0A1628] px-3 py-1 rounded font-bold hover:bg-white transition-colors text-xs shrink-0">
+                FR / EN
+            </button>
+        </div>
+    </nav>
+
+    <div class="flex-grow grid grid-cols-1 lg:grid-cols-12 gap-px bg-[#C9A84C]/20 overflow-hidden lg:h-[calc(100vh-3.5rem)]">
+        
+        <section id="home" class="lg:col-span-4 bg-[#0A1628] flex flex-col p-6 lg:p-10 overflow-y-auto custom-scroll lg:border-r border-white/5">
+            <div id="about" class="mb-10 lg:mb-12 border-l-4 border-[#C9A84C] pl-6 py-2">
+                <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight mb-4 tracking-tight">
+                    INNO4TE <span class="text-[#C9A84C]">×</span> Liberty
+                </h1>
+                <p data-t="hero.subtitle" class="text-xs lg:text-sm tracking-[0.2em] uppercase text-[#C9A84C] font-semibold">Professional Editorial & Publishing Services</p>
+            </div>
+            
+            <div class="space-y-6 lg:space-y-8 flex-grow">
+                <div class="bg-[#142338] p-6 lg:p-8 rounded-lg border border-[#C9A84C]/10 shadow-lg">
+                    <h3 data-t="about.inno4te.name" class="text-[#C9A84C] font-serif text-xl md:text-2xl italic mb-4">INNO4TE Publishing</h3>
+                    <p data-t="about.inno4te.description" class="text-sm leading-relaxed text-white/80">A professional editorial and publishing services company...</p>
+                    <p class="text-[11px] text-[#C9A84C] mt-4 uppercase tracking-widest font-bold font-sans italic">"<span data-t="hero.tagline1">Inspire. Innovate. Publish.</span>"</p>
+                </div>
+
+                <div class="bg-[#142338] p-6 lg:p-8 rounded-lg border border-[#C9A84C]/10 shadow-lg">
+                    <h3 data-t="about.liberty.name" class="text-[#C9A84C] font-serif text-xl md:text-2xl italic mb-4">Liberty Publishing House</h3>
+                    <p data-t="about.liberty.description" class="text-sm leading-relaxed text-white/80">A purpose-driven publishing house committed to freeing minds...</p>
+                    <p class="text-[11px] text-[#C9A84C] mt-4 uppercase tracking-widest font-bold font-sans italic">"<span data-t="hero.tagline2">Libérer les esprits, guérir les cœurs, transformer des vies</span>"</p>
+                </div>
+            </div>
+
+            <div class="mt-12 lg:mt-auto pt-6 border-t border-white/5">
+                <button onclick="scrollToSection('contact')" data-t="hero.cta2" class="w-full bg-[#C9A84C] text-[#0A1628] font-bold py-4 text-sm rounded uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all shadow-xl">
+                    Contact Us Now
+                </button>
+            </div>
+        </section>
+
+        <section id="pricing" class="lg:col-span-5 bg-white text-[#0A1628] p-6 lg:p-10 overflow-y-auto custom-scroll">
+            <div class="flex justify-between items-end mb-8 border-b-2 border-[#C9A84C] pb-3">
+                <h2 data-t="editorial.title" class="font-serif text-3xl font-bold tracking-tight">Editorial Services & Pricing</h2>
+                <div data-t="editorial.pricing" class="text-[10px] uppercase tracking-widest font-bold text-gray-400 font-sans mb-1">Pricing</div>
+            </div>
+            
+            <div id="pricing-container" class="flex flex-col gap-6 lg:gap-8">
+                </div>
+        </section>
+
+        <section class="lg:col-span-3 bg-[#142338] flex flex-col border-l border-white/5 overflow-hidden">
+            <div id="others" class="p-6 lg:p-8 overflow-y-auto flex-grow custom-scroll bg-[#0A1628]/30">
+                <h3 class="text-xs font-bold text-[#C9A84C] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                    <span class="w-8 h-[1px] bg-[#C9A84C]/50 flex shrink-0"></span>
+                    <span data-t="others.title">Other Services</span>
+                </h3>
+                
+                <div id="other-services-container" class="grid gap-3">
+                    </div>
+
+                <div id="contact" class="mt-12 space-y-4">
+                    <h3 class="text-xs font-bold text-[#C9A84C] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                        <span class="w-8 h-[1px] bg-[#C9A84C]/50 flex shrink-0"></span>
+                        <span data-t="contact.title">Contact Us</span>
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <a href="https://wa.me/237694294406" target="_blank" class="flex items-center justify-center gap-2 bg-green-600/90 text-white p-3 rounded text-[11px] font-bold uppercase tracking-widest hover:bg-green-600 hover:scale-[1.02] transition-all">
+                            <i data-lucide="message-square" class="w-4 h-4"></i> WHATSAPP INNO4TE
+                        </a>
+                        <a href="https://wa.me/237673202653" target="_blank" class="flex items-center justify-center gap-2 bg-green-600/90 text-white p-3 rounded text-[11px] font-bold uppercase tracking-widest hover:bg-green-600 hover:scale-[1.02] transition-all text-center">
+                            <i data-lucide="message-square" class="w-4 h-4"></i> WHATSAPP LIBERTY
+                        </a>
+                        <a href="mailto:inno4te@gmail.com" class="flex items-center justify-center gap-2 bg-white text-[#0A1628] p-3 rounded text-[11px] font-bold uppercase tracking-widest hover:bg-gray-100 hover:scale-[1.02] transition-all">
+                            <i data-lucide="mail" class="w-4 h-4"></i> EMAIL INNO4TE
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="p-8 border-t border-[#C9A84C]/20 bg-[#0A1628] text-[10px] text-white/40 leading-relaxed shrink-0">
+                <div class="font-bold text-[#C9A84C]/60 mb-2 uppercase tracking-tighter">INNO4TE × LIBERTY</div>
+                <p data-t="footer.rights">© 2025 INNO4TE Publishing × Liberty Publishing House. All Rights Reserved.</p>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                nav: { home: "Home", about: "About Us", pricing: "Pricing", contact: "Contact Us" },
+                hero: { subtitle: "Professional Editorial & Publishing Services", tagline1: "Inspire. Innovate. Publish.", tagline2: "Libérer les esprits, guérir les cœurs, transformer des vies", cta2: "Contact Us Now" },
+                about: { 
+                    inno4te: { name: "INNO4TE Publishing", description: "A professional editorial and publishing services company dedicated to helping authors bring their manuscripts to life with precision, quality, and international standards." },
+                    liberty: { name: "Liberty Publishing House", description: "A purpose-driven publishing house committed to freeing minds, healing hearts, and transforming lives through the power of the written word." }
+                },
+                editorial: { title: "Editorial Services & Pricing", pricing: "Pricing", level: "Level", intervention: "Intervention", promoPrice: "Church Promo", getPackage: "Get This Package" },
+                others: { title: "Other Services" },
+                contact: { title: "Contact Us" },
+                footer: { rights: "© 2025 INNO4TE Publishing × Liberty Publishing House. All Rights Reserved." }
+            },
+            fr: {
+                nav: { home: "Accueil", about: "À Propos", pricing: "Tarification", contact: "Contact" },
+                hero: { subtitle: "Services Professionnels d'Édition et de Publication", tagline1: "Inspirer. Innover. Publier.", tagline2: "Libérer les esprits, guérir les cœurs, transformer des vies", cta2: "Contactez-nous" },
+                about: { 
+                    inno4te: { name: "INNO4TE Publishing", description: "Une société professionnelle de services éditoriaux et d'édition dédiée à aider les auteurs à donner vie à leurs manuscrits avec précision et qualité." },
+                    liberty: { name: "Liberty Publishing House", description: "Une maison d'édition engagée à libérer les esprits, guérir les cœurs et transformer des vies." }
+                },
+                editorial: { title: "Services Éditoriaux et Tarification", pricing: "Prix", level: "Niveau", intervention: "Intervention", promoPrice: "Promo Église", getPackage: "Choisir ce forfait" },
+                others: { title: "Autres Services" },
+                contact: { title: "Contactez-nous" },
+                footer: { rights: "© 2025 INNO4TE Publishing × Liberty Publishing House. Tous droits réservés." }
+            }
+        };
+
+        const editorialLevels = [
+            { id: 1, usd: "200", fcfa: "30,000", promo: "25,000", en_int: "Less than 25%", fr_int: "Moins de 25%", en_name: "Level 1", fr_name: "Niveau 1", services: ["Proofreading", "Grammar", "Formatting"] },
+            { id: 2, usd: "400", fcfa: "50,000", promo: "40,000", en_int: "25% to 50%", fr_int: "25% à 50%", en_name: "Level 2", fr_name: "Niveau 2", services: ["In-depth Revision", "Fluidity", "Style"] },
+            { id: 3, usd: "700", fcfa: "250,000", promo: "150,000", en_int: "50%+", fr_int: "50% et plus", en_name: "Level 3", fr_name: "Niveau 3", services: ["Developmental Editing", "Restructuring", "Deep Fact Check"] }
+        ];
+
+        const otherServices = [
+            { en: "Cover Design", fr: "Conception de couverture", price: "10,000 FCFA" },
+            { en: "eBook Conversion", fr: "Conversion eBook", price: "10,000 FCFA" },
+            { en: "Amazon Upload", fr: "Téléchargement Amazon", price: "30,000 FCFA" }
+        ];
+
+        let currentLang = 'en';
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            render();
+        }
+
+        function render() {
+            // Update static text
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const path = el.getAttribute('data-t').split('.');
+                let val = translations[currentLang];
+                path.forEach(key => val = val[key]);
+                el.innerText = val;
+            });
+
+            document.getElementById('langBtn').innerText = currentLang === 'en' ? 'FR / EN' : 'EN / FR';
+
+            // Render Pricing
+            const pricingContainer = document.getElementById('pricing-container');
+            pricingContainer.innerHTML = editorialLevels.map(lvl => `
+                <div class="border rounded-lg overflow-hidden shadow-sm ${lvl.id === 2 ? 'border-[#C9A84C] border-2 bg-[#C9A84C]/5' : 'border-gray-100 bg-[#f9f9f9]'} p-6">
+                    <div class="flex justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded tracking-widest ${lvl.id === 2 ? 'bg-[#C9A84C] text-[#0A1628]' : 'bg-[#0A1628] text-white'}">
+                            ${translations[currentLang].editorial.level} 0${lvl.id}
+                        </span>
+                        <div class="text-right">
+                            <div class="text-xl font-bold font-serif">$${lvl.usd} <span class="text-xs font-normal opacity-40">/ ${lvl.fcfa} FCFA</span></div>
+                            <div class="text-[11px] font-black text-red-600 uppercase mt-1">${translations[currentLang].editorial.promoPrice}: ${lvl.promo} FCFA</div>
+                        </div>
+                    </div>
+                    <p class="text-[11px] font-bold text-gray-400 uppercase mb-3">${translations[currentLang].editorial.intervention}: ${currentLang === 'en' ? lvl.en_int : lvl.fr_int}</p>
+                    <button class="w-full py-3 rounded text-[11px] font-bold uppercase ${lvl.id === 2 ? 'bg-[#C9A84C] text-[#0A1628]' : 'bg-[#0A1628] text-white'}">${translations[currentLang].editorial.getPackage}</button>
+                </div>
+            `).join('');
+
+            // Render Other Services
+            const otherContainer = document.getElementById('other-services-container');
+            otherContainer.innerHTML = otherServices.map(s => `
+                <div class="bg-[#0A1628]/40 p-4 rounded-lg border border-white/5">
+                    <div class="font-serif text-[#C9A84C] text-[13px]">${currentLang === 'en' ? s.en : s.fr}</div>
+                    <div class="text-[11px] font-black text-white/40 font-mono">${s.price}</div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Initialize
+        render();
+    </script>
+</body>
+</html>
